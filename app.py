@@ -79,7 +79,7 @@ def calculate():
             unit = "°C-days"
 
         elif formula == "gdd_villa_nova":
-            [cite_start]# [cite: 11]
+            #[cite_start]# [cite: 11]
             TM, Tm, Tb = val('TM'), val('Tm'), val('Tb')
             if Tb >= TM:
                 result = 0
@@ -92,7 +92,7 @@ def calculate():
             unit = "°C-days"
 
         elif formula == "gdd_ometto":
-            [cite_start]# [cite: 11]
+            #[cite_start]# [cite: 11]
             TM, Tm, Tb, TB = val('TM'), val('Tm'), val('Tb'), val('TB')
             
             # Case 1: TM > TB > Tm > Tb
@@ -123,7 +123,7 @@ def calculate():
             unit = "°C-days"
 
         elif formula == "gdd_snyder":
-            [cite_start]# [cite: 11, 13] Sine Method
+            #[cite_start]# [cite: 11, 13] Sine Method
             TM, Tm, Tb, TB = val('TM'), val('Tm'), val('Tb'), val('TB')
             M = (TM + Tm) / 2.0
             W = (TM - Tm) / 2.0
@@ -264,7 +264,7 @@ def calculate():
             unit = "Index"
             
         elif formula == "mtvi2":
-            [cite_start]# [cite: 18] Complex formula involving MTVI1 logic inside numerator
+            #[cite_start]# [cite: 18] Complex formula involving MTVI1 logic inside numerator
             r800, r550, r670 = val('R800'), val('R550'), val('R670')
             num = 1.5 * (1.2 * (r800 - r550) - 2.5 * (r670 - r550))
             den = math.sqrt((2 * r800 + 1)**2 - (6 * r800 - 5 * math.sqrt(r670)) - 0.5)
@@ -298,7 +298,7 @@ def calculate():
             unit = "Index"
 
         elif formula == "mcari2":
-            [cite_start]# [cite: 19]
+            #[cite_start]# [cite: 19]
             r800, r670, r550 = val('R800'), val('R670'), val('R550')
             num = 1.5 * (2.5 * (r800 - r670) - 1.3 * (r800 - r550))
             den = math.sqrt((2 * r800 + 1)**2 - (6 * r800 - 5 * math.sqrt(r670)) - 0.5)
