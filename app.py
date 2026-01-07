@@ -92,7 +92,7 @@ def calculate():
 
             else: result = 0
 
-         unit = "°C-days"
+            unit = "°C-days"
 
         elif formula == "gdd_ometto":
             #[cite_start]# [cite: 11]
