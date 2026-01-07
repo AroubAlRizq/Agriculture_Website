@@ -14,19 +14,13 @@
   --blue-accent: #3b82f6;
   --cyan-accent: #22d3ee;
   
-  /* UPDATED: Changed from Orange to Green */
-  --warm-accent: #10b981; 
+  --warm-accent: #10b981; /* Emerald Green */
 
   --glow-blue: 0 0 20px rgba(59, 130, 246, 0.35);
-  
-  /* UPDATED: Green Glow */
   --glow-warm: 0 0 20px rgba(16, 185, 129, 0.35); 
 
   --bg-grad-1: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%);
-  
-  /* UPDATED: Bottom left is now Greenish instead of Orange */
   --bg-grad-2: radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.15), transparent 40%); 
-  
   --bg-grad-3: transparent;
 
   --headline-grad: linear-gradient(90deg, var(--purple-accent), var(--blue-accent), var(--warm-accent));
@@ -41,220 +35,138 @@
 /* =========================
    2. Global Reset & Body
    ========================= */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+  margin: 0; padding: 0; min-height: 100vh;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background: 
-    var(--bg-grad-1), 
-    var(--bg-grad-2), 
-    var(--bg-main);
+  background: var(--bg-grad-1), var(--bg-grad-2), var(--bg-main);
   background-attachment: fixed;
   color: var(--text-main);
-  
-  /* CENTERING FIX: This centers the card vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center; 
+  display: flex; justify-content: center; align-items: center; 
 }
 
 /* =========================
    3. Layout Containers
    ========================= */
 .app {
-  width: 100%;
-  max-width: 800px;
-  padding: 2rem 1.5rem;
+  width: 100%; max-width: 800px; padding: 2rem 1.5rem;
 }
 
 /* Top Navigation Bar */
 .topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  border-radius: 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
-  border: var(--border-soft);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  margin-bottom: 2rem;
+  border: var(--border-soft); backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-bottom: 2rem;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
+.brand { display: flex; align-items: center; gap: 1rem; }
 .logo-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
-  display: grid;
-  place-items: center;
-  font-weight: bold;
-  font-size: 1.2rem;
+  display: grid; place-items: center; font-weight: bold; font-size: 1.2rem;
   box-shadow: var(--glow-blue);
 }
-
 .brand-text h1 {
-  font-size: 1.1rem;
-  margin: 0;
-  background: var(--headline-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem; margin: 0;
+  background: var(--headline-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   font-weight: 700;
 }
-
-.brand-text p {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--text-soft);
-}
+.brand-text p { margin: 0; font-size: 0.8rem; color: var(--text-soft); }
 
 /* =========================
-   4. The Calculator Card (Glassmorphism)
+   4. Glass Card
    ========================= */
 .glass-card {
-  padding: 2.5rem;
-  border-radius: var(--radius);
+  padding: 2.5rem; border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.03);
-  border: var(--border-soft);
-  backdrop-filter: blur(15px);
+  border: var(--border-soft); backdrop-filter: blur(15px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
 /* =========================
-   5. Interactive Inputs (Bubble Style)
+   5. Interactive Inputs (Bubbles)
    ========================= */
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
+.form-group { margin-bottom: 1.5rem; }
 label {
-  display: block;
-  margin-bottom: 0.6rem;
-  margin-left: 0.8rem;
-  color: var(--text-soft);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  display: block; margin-bottom: 0.6rem; margin-left: 0.8rem;
+  color: var(--text-soft); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px;
 }
 
-/* The "Bubble" Input */
+/* Input Styling */
 select, input {
-  width: 100%;
-  padding: 1.2rem 1.5rem;
+  width: 100%; padding: 1.2rem 1.5rem;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.25);
   color: var(--text-main);
-  font-size: 1rem;
-  font-family: inherit;
+  font-size: 1rem; font-family: inherit;
   transition: var(--transition);
-  backdrop-filter: blur(5px);
-  appearance: none;
+  backdrop-filter: blur(5px); appearance: none;
 }
 
 select:focus, input:focus {
-  outline: none;
-  background: rgba(0, 0, 0, 0.4);
-  border-color: var(--blue-accent);
-  box-shadow: var(--glow-blue);
+  outline: none; background: rgba(0, 0, 0, 0.4);
+  border-color: var(--blue-accent); box-shadow: var(--glow-blue);
   transform: translateY(-2px);
 }
 
-/* Custom Select Arrow */
-.select-wrapper {
-  position: relative;
+/* --- FIX FOR DROPDOWN OPTIONS --- */
+/* This forces the dropdown menu itself to be dark */
+select option, select optgroup {
+    background-color: #120822; /* Force Dark Navy Background */
+    color: #ffffff;            /* Force White Text */
+    padding: 10px;
 }
 
+/* Custom Select Arrow */
+.select-wrapper { position: relative; }
 .select-wrapper::after {
-  content: '▼';
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  content: '▼'; font-size: 0.8rem; color: var(--text-muted);
+  position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
   pointer-events: none;
 }
 
 .inputs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin-top: 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.5rem;
 }
 
 /* =========================
    6. Buttons & Results
    ========================= */
 button {
-  width: 100%;
-  padding: 1.2rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 99px;
-  /* Updated Gradient to include Green */
+  width: 100%; padding: 1.2rem; margin-top: 1rem;
+  border: none; border-radius: 99px;
   background: linear-gradient(135deg, var(--blue-accent), var(--warm-accent));
-  color: #0f172a;
-  font-weight: 700;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: var(--transition);
+  color: #0f172a; font-weight: 700; font-size: 1.1rem;
+  cursor: pointer; transition: var(--transition);
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
 }
-
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+  transform: translateY(-3px); box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
 }
 
 .hidden { display: none; }
-
 #result-area {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border-radius: 20px;
-  /* Subtle Green Tint for Result */
+  margin-top: 2rem; padding: 1.5rem; border-radius: 20px;
   background: rgba(16, 185, 129, 0.1); 
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  text-align: center;
+  border: 1px solid rgba(16, 185, 129, 0.3); text-align: center;
   animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 @keyframes popIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
 
 .result-value {
-  font-size: 3rem;
-  font-weight: 800;
-  background: var(--headline-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
+  font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;
+  background: var(--headline-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
 .result-unit {
-  color: var(--text-soft);
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--text-soft); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
 }
-
 footer {
-  text-align: center;
-  margin-top: 3rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;
 }
