@@ -1,5 +1,5 @@
 /* =========================
-   1. Root Variables (Locked to Dark/Sunset Mode)
+   1. Root Variables (Dark Mode with Green Accents)
    ========================= */
 :root {
   --bg-main: #120822;
@@ -13,18 +13,25 @@
   --purple-accent: #7c3aed;
   --blue-accent: #3b82f6;
   --cyan-accent: #22d3ee;
-  --warm-accent: #f59e0b;
+  
+  /* UPDATED: Changed from Orange to Green */
+  --warm-accent: #10b981; 
 
   --glow-blue: 0 0 20px rgba(59, 130, 246, 0.35);
-  --glow-warm: 0 0 20px rgba(245, 158, 11, 0.35);
+  
+  /* UPDATED: Green Glow */
+  --glow-warm: 0 0 20px rgba(16, 185, 129, 0.35); 
 
   --bg-grad-1: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%);
-  --bg-grad-2: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.12), transparent 40%);
+  
+  /* UPDATED: Bottom left is now Greenish instead of Orange */
+  --bg-grad-2: radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.15), transparent 40%); 
+  
   --bg-grad-3: transparent;
 
   --headline-grad: linear-gradient(90deg, var(--purple-accent), var(--blue-accent), var(--warm-accent));
 
-  --radius: 24px; /* Increased for that "Bubble" look */
+  --radius: 24px;
   --transition: 0.25s ease;
 
   --border-soft: 1px solid rgba(255, 255, 255, 0.10);
@@ -47,10 +54,13 @@ body {
     var(--bg-grad-1), 
     var(--bg-grad-2), 
     var(--bg-main);
-  background-attachment: fixed; /* Keeps gradient steady while scrolling */
+  background-attachment: fixed;
   color: var(--text-main);
+  
+  /* CENTERING FIX: This centers the card vertically */
   display: flex;
   justify-content: center;
+  align-items: center; 
 }
 
 /* =========================
@@ -131,7 +141,7 @@ body {
 label {
   display: block;
   margin-bottom: 0.6rem;
-  margin-left: 0.8rem; /* Indent label slightly to match rounded input */
+  margin-left: 0.8rem;
   color: var(--text-soft);
   font-size: 0.9rem;
   font-weight: 500;
@@ -142,7 +152,7 @@ label {
 select, input {
   width: 100%;
   padding: 1.2rem 1.5rem;
-  border-radius: 20px; /* High radius for bubble shape */
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.25);
   color: var(--text-main);
@@ -150,10 +160,9 @@ select, input {
   font-family: inherit;
   transition: var(--transition);
   backdrop-filter: blur(5px);
-  appearance: none; /* Removes default OS styling */
+  appearance: none;
 }
 
-/* Input Focus Effects */
 select:focus, input:focus {
   outline: none;
   background: rgba(0, 0, 0, 0.4);
@@ -193,19 +202,20 @@ button {
   padding: 1.2rem;
   margin-top: 1rem;
   border: none;
-  border-radius: 99px; /* Full pill shape */
-  background: linear-gradient(135deg, var(--blue-accent), var(--cyan-accent));
-  color: #0f172a; /* Dark text for contrast */
+  border-radius: 99px;
+  /* Updated Gradient to include Green */
+  background: linear-gradient(135deg, var(--blue-accent), var(--warm-accent));
+  color: #0f172a;
   font-weight: 700;
   font-size: 1.1rem;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
 }
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
 }
 
 .hidden { display: none; }
@@ -214,8 +224,9 @@ button:hover {
   margin-top: 2rem;
   padding: 1.5rem;
   border-radius: 20px;
-  background: rgba(124, 58, 237, 0.1); /* Subtle purple tint */
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  /* Subtle Green Tint for Result */
+  background: rgba(16, 185, 129, 0.1); 
+  border: 1px solid rgba(16, 185, 129, 0.3);
   text-align: center;
   animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -241,7 +252,6 @@ button:hover {
   letter-spacing: 1px;
 }
 
-/* Footer */
 footer {
   text-align: center;
   margin-top: 3rem;
