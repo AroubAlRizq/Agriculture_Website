@@ -1,151 +1,250 @@
-/* Color Variables - NCM Inspired */
+/* =========================
+   1. Root Variables (Locked to Dark/Sunset Mode)
+   ========================= */
 :root {
-    --bg-color: #0b1d35; /* Deep Navy */
-    --card-bg: #162a47;  /* Lighter Navy */
-    --accent: #00d4ff;   /* Cyan/Electric Blue for highlights */
-    --accent-hover: #00a3cc;
-    --text-main: #ffffff;
-    --text-muted: #a0aec0;
-    --green-hue: #10b981; /* For agriculture context */
+  --bg-main: #120822;
+  --bg-secondary: #1b0b2e;
+  --bg-card: rgba(255, 255, 255, 0.05);
+
+  --text-main: #ede9fe;
+  --text-soft: #c4b5fd;
+  --text-muted: #9ca3af;
+
+  --purple-accent: #7c3aed;
+  --blue-accent: #3b82f6;
+  --cyan-accent: #22d3ee;
+  --warm-accent: #f59e0b;
+
+  --glow-blue: 0 0 20px rgba(59, 130, 246, 0.35);
+  --glow-warm: 0 0 20px rgba(245, 158, 11, 0.35);
+
+  --bg-grad-1: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%);
+  --bg-grad-2: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.12), transparent 40%);
+  --bg-grad-3: transparent;
+
+  --headline-grad: linear-gradient(90deg, var(--purple-accent), var(--blue-accent), var(--warm-accent));
+
+  --radius: 24px; /* Increased for that "Bubble" look */
+  --transition: 0.25s ease;
+
+  --border-soft: 1px solid rgba(255, 255, 255, 0.10);
+  --border-softer: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* =========================
+   2. Global Reset & Body
+   ========================= */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: 
+    var(--bg-grad-1), 
+    var(--bg-grad-2), 
+    var(--bg-main);
+  background-attachment: fixed; /* Keeps gradient steady while scrolling */
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
 }
 
-.main-container {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
+/* =========================
+   3. Layout Containers
+   ========================= */
+.app {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem 1.5rem;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 10px;
+/* Top Navigation Bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border: var(--border-soft);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
 }
 
-h1 {
-    font-weight: 300;
-    margin: 0;
-    font-size: 1.8rem;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 5px;
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: var(--glow-blue);
 }
 
-.calculator-card {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+.brand-text h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  background: var(--headline-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
+.brand-text p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+/* =========================
+   4. The Calculator Card (Glassmorphism)
+   ========================= */
+.glass-card {
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border-soft);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   5. Interactive Inputs (Bubble Style)
+   ========================= */
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--accent);
-    font-weight: 500;
-    font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.6rem;
+  margin-left: 0.8rem; /* Indent label slightly to match rounded input */
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
+/* The "Bubble" Input */
 select, input {
-    width: 100%;
-    padding: 12px;
-    background-color: #0b1d35;
-    border: 1px solid #2d3748;
-    border-radius: 6px;
-    color: white;
-    font-size: 1rem;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
-    transition: border-color 0.3s;
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 20px; /* High radius for bubble shape */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+  appearance: none; /* Removes default OS styling */
 }
 
+/* Input Focus Effects */
 select:focus, input:focus {
-    outline: none;
-    border-color: var(--accent);
+  outline: none;
+  background: rgba(0, 0, 0, 0.4);
+  border-color: var(--blue-accent);
+  box-shadow: var(--glow-blue);
+  transform: translateY(-2px);
+}
+
+/* Custom Select Arrow */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: '▼';
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .inputs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
 }
 
-.input-group label {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
+/* =========================
+   6. Buttons & Results
+   ========================= */
 button {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--green-hue);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 99px; /* Full pill shape */
+  background: linear-gradient(135deg, var(--blue-accent), var(--cyan-accent));
+  color: #0f172a; /* Dark text for contrast */
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
 }
 
 button:hover {
-    background-color: #0d9668;
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.5);
 }
 
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
 #result-area {
-    margin-top: 30px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 5px solid var(--accent);
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(124, 58, 237, 0.1); /* Subtle purple tint */
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  text-align: center;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-h2 {
-    margin: 0 0 10px 0;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .result-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-main);
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--headline-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
 }
 
 .result-unit {
-    color: var(--accent);
-    font-size: 1rem;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* Footer */
 footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.8rem;
-    color: #4a5568;
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
