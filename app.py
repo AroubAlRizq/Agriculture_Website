@@ -86,10 +86,12 @@ def calculate():
             elif Tb < Tm:
                 result = ((Tm - Tb) + (TM - Tm)) / 2.0 
                 # Note: This mathematically simplifies to (TM+Tm)/2 - Tb (Arnold), but uses Source 11 syntax.
-            else: 
+            elif Tb>=Tm: 
                 # Case: Tm < Tb < TM
                 result = ((TM - Tb)**2) / (2 * (TM - Tm)) if (TM-Tm) != 0 else 0
             unit = "°C-days"
+
+            else: result = 0
 
         elif formula == "gdd_ometto":
             #[cite_start]# [cite: 11]
