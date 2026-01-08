@@ -185,8 +185,8 @@ def calculate():
             if t <= 1.5: result = 0
             elif 1.6 <= t <= 7.1: result = 0.5
             elif 7.2 <= t <= 12.9: result = 1.0
-            elif 13.0 <= t <= 14.6: result = 0.5
-            elif 14.7 <= t <= 19.0: result = 0 # Review with Dr. Alaa
+            elif 13.0 <= t <= 16.4: result = 0.5
+            elif 16.5 <= t <= 19.0: result = 0 # Review with Dr. Alaa
             elif 19.1 <= t <= 20.6: result = -0.5
             elif 20.7 <= t <= 22.0: result = -1.0
             elif 22.1 <= t <= 23.2: result = -1.5
