@@ -98,28 +98,31 @@ def calculate():
             #[cite_start]# [cite: 11]
             TM, Tm, Tb, TB = val('TM'), val('Tm'), val('Tb'), val('TB')
             
-            # Case 1: TM > TB > Tm > Tb
-            if TM > TB and TB > Tm and Tm > Tb:
+            
+            if TM > TB and TB > Tm and Tm > Tb: # Case 4
                 term1 = 2 * (TM - Tm) * (Tm - Tb)
                 term2 = (TM - Tm)**2
                 term3 = (TM - TB)**2
                 den = 2 * (TM - Tm)
                 result = (term1 + term2 - term3) / den
             
-            # Case 2: TB > TM > Tm > Tb (Standard Arnold w/ Upper Cap ignored or fit)
-            elif TB > TM and TM > Tm and Tm > Tb:
+            
+            elif TB > TM and TM > Tm and Tm > Tb: # Case 1
                 result = ((TM - Tm) / 2.0) + (Tm - Tb)
                 
-            # Case 3: TM > TB > Tb > Tm
-            elif TM > TB and TB > Tb and Tb > Tm:
+            
+            elif TM > TB and TB > Tb and Tb > Tm: # Case 5
                 term1 = (TM - Tb)**2
                 term2 = (TM - TB)**2
                 den = 2 * (TM - Tm)
                 result = 0.5 * ((term1 - term2) / (TM - Tm))
 
-            # Case 4: TB > TM > Tb > Tm
-            elif TB > TM and TM > Tb and Tb > Tm:
+            
+            elif TB > TM and TM > Tb and Tb > Tm: # Case 2
                  result = ((TM - Tb)**2) / (2 * (TM - Tm))
+
+            elif TB > Tb and Tb > TM and TM > Tm: # Case 3
+                 result = 0
             
             else:
                 result = 0 # Default/Fallback
