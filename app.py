@@ -81,8 +81,8 @@ def calculate():
         elif formula == "gdd_villa_nova":
             #[cite_start]# [cite: 11]
             TM, Tm, Tb = val('TM'), val('Tm'), val('Tb')
-            if Tb >= TM:
-                result = 0
+            if Tb >= TM: # to check if base emp already less than the max temp of the day
+                result = 0 # no growth because the highest temp was already too cold for the plants to grow
             elif Tb < Tm:
                 result = ((Tm - Tb) + (TM - Tm)) / 2.0 
                 # Note: This mathematically simplifies to (TM+Tm)/2 - Tb (Arnold), but uses Source 11 syntax.
