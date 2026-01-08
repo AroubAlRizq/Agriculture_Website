@@ -21,7 +21,7 @@ def calculate():
             return float(inputs.get(key, 0))
 
         # ==========================================
-        # [cite_start]1. EVAPOTRANSPIRATION (ET) [cite: 2, 5]
+        # 1. [cite_start]EVAPOTRANSPIRATION (ET) [cite: 2, 5]
         # ==========================================
         if formula == "hargreaves":
             # [cite_start]ET = 0.0023 * (Tmean + 17.8) * sqrt(Tmax-Tmin) * Ra [cite: 2]
@@ -70,7 +70,7 @@ def calculate():
             unit = "mm/day"
 
         # ==========================================
-        # [cite_start]2. GROWING DEGREE DAYS (GDD) [cite: 11, 13]
+        # 2. [cite_start]GROWING DEGREE DAYS (GDD) [cite: 11, 13]
         # ==========================================
         elif formula == "gdd_arnold":
             tm_big, tm_small, tb = val('TM'), val('Tm'), val('Tb')
@@ -165,7 +165,7 @@ def calculate():
             unit = "°C-days"
 
         # ==========================================
-        # [cite_start]3. CHILL UNITS [cite: 7, 9]
+        # 3. [cite_start]CHILL UNITS [cite: 7, 9]
         # ==========================================
         elif formula == "chill_utah":
             # Lookup Table based on Source 9
@@ -194,7 +194,7 @@ def calculate():
             unit = "Chill Units (Hourly)"
 
         # ==========================================
-        # [cite_start]4. VEGETATION INDICES [cite: 16, 18, 19]
+        # 4. [cite_start]VEGETATION INDICES [cite: 16, 18, 19]
         # ==========================================
         elif formula == "ndvi":
             nir, red = val('NIR'), val('Red')
@@ -285,11 +285,29 @@ def calculate():
             unit = "Index"
         
         elif formula == "car":
-            # Source 18 logic
-            # formula not clearly printed in snippet, approximating based on standard CARI logic
-            # Assuming simplified CARI without 'a' constant if parameters not given
-            result = 0 
-            unit = "Formula unclear in source"
+            # CAR [Kim et al. [cite_start]1994] [cite: 18]
+            r700, r670, r550 = val('R700'), val('R670'), val('R550')
+            a = (r700 - r550) / 150.0 
+            b = r550 - (a * 550)    
+            result = abs((a * 670 + b) - r670)
+            unit = "Index"
+
+        elif formula == "cari":
+            # CARI [Kim et al. [cite_start]1994] [cite: 18]
+            r700, r670, r550 = val('R700'), val('R670'), val('R550')
+            a = (r700 - r550) / 150.0 
+            b = r550 - (a * 550)
+            car_val = abs((a * 670 + b) - r670)
+            result = (car_val * (r700/r670)) / math.sqrt(a**2 + 1) if r670!=0 else 0
+            unit = "Index"
+
+        elif formula == "tcari":
+             # TCARI [Haboudane et al. [cite_start]2002] [cite: 19]
+            r700, r670, r550 = val('R700'), val('R670'), val('R550')
+            term1 = r700 - r670
+            term2 = 0.2 * (r700 - r550) * (r700 / r670) if r670!=0 else 0
+            result = 3 * (term1 - term2)
+            unit = "Index"
 
         elif formula == "mcari":
             # [cite_start][(R700-R670) - 0.2*(R700-R550)] * (R700/R670) [cite: 19]
@@ -338,7 +356,7 @@ def calculate():
             unit = "Index"
 
         elif formula == "osavi":
-             # (1 + 0.16) [cite_start]* (NIR - Red) / (NIR + Red + 0.16) [cite: 19]
+             # (1 + 0.16) * (NIR - Red) [cite_start]/ (NIR + Red + 0.16) [cite: 19]
             nir, red = val('NIR'), val('Red')
             result = (1.16 * (nir - red)) / (nir + red + 0.16) if (nir+red+0.16)!=0 else 0
             unit = "Index"
