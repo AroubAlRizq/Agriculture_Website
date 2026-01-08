@@ -325,7 +325,7 @@ def calculate():
             #[cite_start]# [cite: 19]
             r800, r670, r550 = val('R800'), val('R670'), val('R550')
             num = 1.5 * (2.5 * (r800 - r670) - 1.3 * (r800 - r550))
-            den = math.sqrt((2 * r800 + 1)**2 - (6 * r800 - 5 * math.sqrt(r670)) - 0.5)
+            den = math.sqrt((2 * r800 + 1)**2 - (6 * r800 - 5 * math.sqrt(r680)) - 0.5)
             result = num / den if den!=0 else 0
             unit = "Index"
 
