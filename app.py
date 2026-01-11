@@ -373,7 +373,7 @@ def calculate():
                 red = float(val('Red'))
                 # Default L to 0.5 if it's missing from input
                 L_input = val('L')
-                L = float(L_input) if L_input else 0.5
+                L = float(L_input) 
             except (ValueError, TypeError):
                 return 0  # Returns 0 if inputs are invalid text
         
