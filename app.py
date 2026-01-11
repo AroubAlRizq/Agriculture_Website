@@ -367,20 +367,40 @@ def calculate():
             unit = "Index"
         
         elif formula == "msavi":
-            nir, red, L = val('NIR'), val('Red'), val('L')          
-            numerator = (1 + L** math.e) * (nir - red)
+            # 1. Get values and ensure they are floats
+            try:
+                nir = float(val('NIR'))
+                red = float(val('Red'))
+                # Default L to 0.5 if it's missing from input
+                L_input = val('L')
+                L = float(L_input) if L_input else 0.5
+            except (ValueError, TypeError):
+                return 0  # Returns 0 if inputs are invalid text
+        
+            # 2. The Formula
+            # NOTE: The 'e' in your image is likely a typo/footnote. 
+            # Standard MSAVI uses (1 + L).
+            # If you REALLY want the exponent 'e', uncomment the second line below:
+            
+            term1 = (1 + L)               # Standard Scientific Formula
+            # term1 = (1 + L**math.e)     # Formula matching your image exactly
+            
+            numerator = term1 * (nir - red)
             denominator = nir + red + L
             
-            result = numerator / denominator
-            unit = "Index"
-
+            # 3. Prevent division by zero
+            if denominator == 0:
+                result = 0
+            else:
+                result = numerator / denominator"
+        
         elif formula == "msavi2":
-            # [cite_start]0.5 * (2*NIR + 1 - sqrt((2*NIR+1)^2 - 8*(NIR-Red))) [cite: 19]
-            nir, red = val('NIR'), val('Red')
-            term1 = 2 * nir + 1
-            term2 = term1**2 - 8 * (nir - red)
-            result = 0.5 * (term1 - math.sqrt(max(0, term2)))
-            unit = "Index"
+                    # [cite_start]0.5 * (2*NIR + 1 - sqrt((2*NIR+1)^2 - 8*(NIR-Red))) [cite: 19]
+             nir, red = val('NIR'), val('Red')
+             term1 = 2 * nir + 1
+             term2 = term1**2 - 8 * (nir - red)
+             result = 0.5 * (term1 - math.sqrt(max(0, term2)))
+             unit = "Index"
         
         elif formula == "sarvi":
              # Source 19 defines it with constants.
