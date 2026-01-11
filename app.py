@@ -392,7 +392,7 @@ def calculate():
             if denominator == 0:
                 result = 0
             else:
-                result = numerator / denominator"
+                result = numerator / denominator
         
         elif formula == "msavi2":
                     # [cite_start]0.5 * (2*NIR + 1 - sqrt((2*NIR+1)^2 - 8*(NIR-Red))) [cite: 19]
