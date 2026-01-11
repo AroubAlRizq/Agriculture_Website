@@ -297,10 +297,13 @@ def calculate():
         elif formula == "cari":
             # CARI [Kim et al. [cite_start]1994] [cite: 18]
             r700, r670, r550 = val('R700'), val('R670'), val('R550')
-            a = (r700 - r550) / 150.0 
-            b = r550 - (a * 550)
-            car_val = abs((a * 670 + b) - r670)
-            result = (car_val * (r700/r670)) / math.sqrt(a**2 + 1) if r670!=0 else 0
+           a = (r700 - r550) / 150.0 
+            b = r550 - (a * 550)    
+            term1 = abs(a * 670 + b + r670)
+            term2 = math.sqrt(a**2 + 1)
+            term3 = term1/term2
+            term4 = r700/r670
+            result = term3*term4 if r670!=0 else 0
             unit = "Index"
 
         elif formula == "tcari":
