@@ -367,9 +367,7 @@ def calculate():
             unit = "Index"
         
         elif formula == "msavi":
-            nir, red = val('NIR'), val('Red')
-            L = 0.5
-            
+            nir, red, L = val('NIR'), val('Red'), val('L')          
             numerator = (1 + L) * (nir - red)
             denominator = nir + red + L
             
