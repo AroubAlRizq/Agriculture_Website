@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         savi: [{ id: 'NIR', label: 'NIR', placeholder: 'Reflectance' }, { id: 'Red', label: 'Red', placeholder: 'Reflectance' }, { id: 'L', label: 'Soil Factor (L)', placeholder: 'Usually 0.5' }],
         tsavi: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'a', label: 'Slope (a)', placeholder: 'Constant' }, { id: 'b', label: 'Intercept (b)', placeholder: 'Constant' }],
         osavi: [{ id: 'NIR', label: 'NIR', placeholder: 'Reflectance' }, { id: 'Red', label: 'Red', placeholder: 'Reflectance' }],
-        msavi: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }],
+        msavi: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' },{ id: 'L', label: 'L Factor', placeholder: 'L Factor' }],
         sarvi: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'Red', label: 'Red', placeholder: 'Reflectance' }, { id: 'Blue', label: 'Blue', placeholder: 'Reflectance' }],
         msavi2: [{ id: 'NIR', label: 'NIR', placeholder: 'Reflectance' }, { id: 'Red', label: 'Red', placeholder: 'Reflectance' }]
     };
