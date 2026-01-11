@@ -368,13 +368,12 @@ def calculate():
         
         elif formula == "msavi":
             nir, red = val('NIR'), val('Red')
-            term1 = 2*nir + 1
-            term2 = (2*nir + 1)**2
-            term3 = 8*(nir-red)
-            term4 = math.sqrt(term2 - term3)
-            term5 = (term1 - term4)/2
+            L = 0.5
             
-            result = term5
+            numerator = (1 + L) * (nir - red)
+            denominator = nir + red + L
+            
+            result = numerator / denominator
             unit = "Index"
 
         elif formula == "msavi2":
