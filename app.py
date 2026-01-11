@@ -289,7 +289,9 @@ def calculate():
             r700, r670, r550 = val('R700'), val('R670'), val('R550')
             a = (r700 - r550) / 150.0 
             b = r550 - (a * 550)    
-            result = abs((a * 670 + b) - r670)
+            term1 = abs(a * 670 + b + r670)
+            term2 = math.sqrt(a**2 + 1)
+            result = term1/term2
             unit = "Index"
 
         elif formula == "cari":
