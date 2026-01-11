@@ -368,7 +368,7 @@ def calculate():
         
         elif formula == "msavi":
             nir, red, L = val('NIR'), val('Red'), val('L')          
-            numerator = (1 + L) * (nir - red)
+            numerator = (1 + L** math.e) * (nir - red)
             denominator = nir + red + L
             
             result = numerator / denominator
