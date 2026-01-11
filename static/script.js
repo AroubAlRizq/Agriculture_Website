@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cari: [{ id: 'R700', label: 'R700', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'R550', label: 'R550', placeholder: 'Reflectance' }],
         mcari: [{ id: 'R700', label: 'R700', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'R550', label: 'R550', placeholder: 'Reflectance' }],
         mcari1: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'R550', label: 'R550', placeholder: 'Reflectance' }],
-        mcari2: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'R550', label: 'R550', placeholder: 'Reflectance' }, { id: 'R680', label: 'R680 (Red Abs)', placeholder: 'Reflectance' }],
+        mcari2: [{ id: 'R800', label: 'R800', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'R550', label: 'R550', placeholder: 'Reflectance' }],
         tcari: [{ id: 'R700', label: 'R700', placeholder: 'Reflectance' }, { id: 'R670', label: 'R670', placeholder: 'Reflectance' }, { id: 'R550', label: 'R550', placeholder: 'Reflectance' }],
         wdvi: [{ id: 'NIR', label: 'NIR', placeholder: 'Reflectance' }, { id: 'Red', label: 'Red', placeholder: 'Reflectance' }, { id: 'a', label: 'Slope of Soil Line (a)', placeholder: 'Constant' }],
         pvi: [{ id: 'NIR', label: 'NIR', placeholder: 'Reflectance' }, { id: 'Red', label: 'Red', placeholder: 'Reflectance' }, { id: 'a', label: 'Slope (a)', placeholder: 'Constant' }, { id: 'b', label: 'Intercept (b)', placeholder: 'Constant' }],
