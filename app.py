@@ -368,15 +368,9 @@ def calculate():
             term3 = 8*(nir-red)
             term4 = math.sqrt(term2 - term3)
             term5 = (term1 - term4)/2
-             # (1+L)*(R800-R670) / (R800+R670+L) where L is self-adjusting?
-             # Source 19 lists: 0.5 * (2*NIR + 1 - sqrt((2*NIR+1)^2 - 8*(NIR-Red))) for MSAVI2
-             # Source 19 MSAVI (Qi et al) uses formula requiring iterative L.
-             # Using MSAVI2 formula for "msavi2" key.
-             # For "msavi", using standard definition or skipped if ambiguous.
-             # Implemented MSAVI2 below.
             
-             result = term5
-             unit = "Use MSAVI2"
+            result = term5
+            unit = "Index"
 
         elif formula == "msavi2":
             # [cite_start]0.5 * (2*NIR + 1 - sqrt((2*NIR+1)^2 - 8*(NIR-Red))) [cite: 19]
