@@ -15,6 +15,73 @@ def calculate():
     result = 0
     unit = ""
 
+# for when sheet is added to choice
+FORMULA_MAP = {
+    # Evapotranspiration
+    'hargreaves': ['T_mean', 'T_max', 'T_min', 'Ra'],
+    'blaney_criddle': ['Ta', 'Kc'],
+    'fao56': ['Rn', 'G', 'T_mean', 'u2', 'es_ea', 'Delta', 'Gamma'],
+    'stephens_stewart': ['Ta', 'Rl'],
+    'grassi': ['Ta', 'Rl'], # Cloud is optional/internal default
+    'linarce': ['Ta', 'Td', 'z', 'lat'],
+
+    # GDD
+    'gdd_arnold': ['TM', 'Tm', 'Tb'],
+    'gdd_villa_nova': ['TM', 'Tm', 'Tb'],
+    'gdd_ometto': ['TM', 'Tm', 'Tb', 'TB'],
+    'gdd_snyder': ['TM', 'Tm', 'Tb', 'TB'],
+
+    # Chill Units
+    'chill_utah': ['T_current'],
+    'chill_nc': ['T_current'],
+
+    # Vegetation Indices
+    'ndvi': ['NIR', 'Red'],
+    'gndvi': ['NIR', 'Green'],
+    'pri': ['R531', 'R570'],
+    'ndre': ['R790', 'R720'],
+    'ccci': ['NDRE', 'NDRE_min', 'NDRE_max'],
+    'rvi': ['NIR', 'Red'],
+    'evi': ['NIR', 'Red', 'Blue'],
+    'evi2': ['NIR', 'Red'],
+    'varigreen': ['Green', 'Red', 'Blue'],
+    'vari700': ['R700', 'Red', 'Blue'],
+    'tvi': ['R750', 'R550', 'R670'],
+    'mtvi1': ['R800', 'R550', 'R670'],
+    'mtvi2': ['R800', 'R550', 'R670'],
+    'mtci': ['R753', 'R708', 'R681'],
+    'car': ['R700', 'R670', 'R550'],
+    'cari': ['R700', 'R670', 'R550'],
+    'tcari': ['R700', 'R670', 'R550'],
+    'mcari': ['R700', 'R670', 'R550'],
+    'mcari1': ['R800', 'R670', 'R550'],
+    'mcari2': ['R800', 'R670', 'R550'],
+    'wdvi': ['NIR', 'Red', 'a'],
+    'pvi': ['NIR', 'Red', 'a', 'b'],
+    'savi': ['NIR', 'Red', 'L'],
+    'tsavi': ['R800', 'R670', 'a', 'b'],
+    'osavi': ['NIR', 'Red'],
+    'msavi': ['NIR', 'Red', 'L'],
+    'msavi2': ['NIR', 'Red'],
+    'sarvi': ['R800', 'Red', 'Blue'],
+}
+
+# --- CORE CALCULATION ENGINE (Unchanged Logic) ---
+def compute_value(formula, inputs):
+    result = 0
+    unit = ""
+
+    # Helper: Safe Float Conversion with Case Insensitivity
+    def val(key):
+        try:
+            # Case insensitive lookup
+            for k in inputs.keys():
+                if k.strip().lower() == key.lower():
+                    return float(inputs[k])
+            return 0.0 # Should not happen if pre-check passes
+        except:
+            return 0.0
+
     try:
         # --- Helper: Safe Float Conversion ---
         def val(key):
